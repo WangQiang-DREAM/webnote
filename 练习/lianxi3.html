@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+	html,body,ul,li{
+		margin: 0;
+		padding: 0;
+	}
+	.clearfix::after{
+		height: 0;
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.tab{
+		width: 400px;
+		margin: 0 auto;
+
+	}
+	.tab ul{
+
+	}
+	.tab ul li {
+		float: left;
+		list-style: none;
+		width: 90px;
+		height: 30px;
+		line-height: 30px;
+		border: 1px solid #666;
+		text-align: center;
+		cursor: pointer;
+	}
+	.hide{
+		display: none;
+	}
+	.tabbox div{
+		width: 368px;
+		height: 200px;
+		font-size: 65px;
+		text-align: center;
+		line-height: 200px;
+		background-color: green;
+	}
+	.select{
+		background-color: blue;
+	}
+	</style>
+</head>
+<body>
+	<div class="tab">
+		<ul class="clearfix">
+			<li class="select">111</li>
+			<li>222</li>
+			<li>333</li>
+			<li>444</li>
+		</ul>
+		<div class="tabbox">
+			<div>11111</div>
+			<div class="hide">22222</div>
+			<div class="hide">33333</div>
+			<div class="hide">44444</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		var tabLi=$(".tab ul li");
+		tabLi.mouseover(function(){
+			$(this).addClass("select").siblings().removeClass("select");
+			var index=$(this).index();
+			$(".tabbox div").eq(index).removeClass("hide").siblings().addClass("hide");
+		});
+	});
+	</script>
+</body>
+</html>

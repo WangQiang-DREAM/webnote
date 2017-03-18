@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+	.nav ul li{
+		padding: 10px;
+		float: left;
+		background-color: #666;
+		list-style: none;
+	}
+	.nav ul li:hover{
+		cursor: pointer;
+	}
+	.nav ul li.color{
+		background-color: red;
+	}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+			<li>44</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		var nav_li=$(".nav ul li")
+		nav_li.click(function(){
+		$(this).addClass("color").siblings().removeClass("color");
+
+		})
+	})
+	</script>
+</body>
+</html>

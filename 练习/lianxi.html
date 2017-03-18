@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			display: none;
+		}
+		.box-2{
+			width: 100px;
+			height: 100px;
+			background-color:red;
+		}
+		.box-3{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			display: none;
+		}
+		.box-4{
+			width: 100px;
+			height: 100px;
+			background-color: black;
+		}
+		.color{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+<p><button class="show">显示</button><button class="hide"s>隐藏</button>
+<button class="change">变色</button><button class="slide">滑动</button><button class="fadeIn">淡入</button></p>
+<div class="box">
+	<div class="box-2"></div>
+	</div>
+	<div class="box-3">CSS颜色</div>
+	<div class="box-4"></div>
+	<script type="text/javascript">
+	$(function(){
+		$(".show").click(function(){
+			$(".box").show("slow");
+			alert(111);
+		});
+		$(".change").click(function(){
+			$("box-4").addClass("color");
+		})
+		$(".hide").click(function(){
+			$(".box-2").hide("slow");
+			alert(11);
+		});
+		$(".slide").click(function(){
+			$(".box-3").slideDown("slow");
+			$(".box-3").css({"color":"#333","background":"#c00"});
+			alert(11);
+		});
+	});
+	</script>
+	
+</body>
+</html>
