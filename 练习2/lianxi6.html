@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<title>CSS</title>
+<!-- <meta name="author" content="phpstudy.net" />
+<meta name="copyright" content="www.phpstudy.net" /> -->
+<style>
+.test1,.test2{display:none;}
+
+@media screen{
+	body{color:#000;}
+}
+
+@media screen and (min-width:960px){
+	body{
+		background:#dcdcdc;
+	}
+}
+@media screen and (device-width:1024px){
+	.test1{
+		display:block;
+	}
+}
+@media screen and (width:1024px){
+	.test2{
+		display:block;
+	}
+}
+</style>
+</head>
+<body>
+<div>媒体查询</div>
+<div class="test1">如果你的显示器水平分辨率为1024px的话将能看到本条规则的效果（取决于输出设备屏幕分辨率的大小，不随包括浏览器在内的窗体大小而改变）</div>
+<div class="test2">如果视口宽度为1024px的话将能看到本条规则的效果（随包括浏览器在内的窗体大小而改变）</div>
+</body>
+</html>

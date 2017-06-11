@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+	.box{
+		width: 300px;
+		height: 300px;
+		background-color: #333;
+		position: relative;
+		margin-bottom:10px; 
+
+	}
+	.left{
+		width: 302px;
+		height: 300px;
+		border-right: #333;
+		background-color: #333;
+
+	}
+	.right{
+		width: 500px;
+		height: 500px;
+		border: 2px solid blue;
+		/*background-color: #333;*/
+		position: absolute;
+		left: 302px;
+		top: 0;
+	}
+	.right1{
+		width: 500px;
+		height: 200px;
+		border: 2px solid blue;
+		/*background-color: #333;*/
+		position: absolute;
+		left: 302px;
+		top: 0;
+	}
+	.top{
+		width: 496px;
+		height: 496px;
+		position: relative;
+	}
+	.top1{
+		padding-left: 0px;
+		width: 501px;
+		height: 300px;
+		background-color: #fff;
+		position: absolute;
+		left:-2px;
+	}
+	.hidden{
+		display: none;
+	}
+	.left1{
+		/*border: 2px solid blue;
+		border-right: none;*/
+		background-color: #fff;
+		border:2px solid blue;
+		border-right:none; 
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left">111111111</div>
+		<div class="right hidden"><div class="top"><div class="top1">111111789789</div></div></div>
+	</div>
+	<div class="box">
+		<div class="left">111111111</div>
+		<div class="right1 hidden"><div class="top"><div class="top1">111111789789</div></div></div>
+	</div>
+	 <script type="text/javascript">
+	$(function(){
+		// $(".left").mouseover(function(){
+		// 	$(".right").show();$(".left").addClass(".bor");
+		// });
+		// $(".left").mouseout(function(){
+		// 	$(".right").hide();
+		// });
+		// 
+		 $(".left").mouseover(function(){
+		 	$(this).addClass("left1").siblings().show();
+		 });
+		 $(".left").mouseout(function(){
+		 	$(this).removeClass("left1").siblings().hide(); 	
+		 });
+	});
+	</script>
+</body>
+</html>

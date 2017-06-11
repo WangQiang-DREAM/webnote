@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>shopcar</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style>
+	body,html,div,ul,li,p{
+		margin: 0;
+		padding: 0;
+		font-size: 62.5%;
+	}
+	body{
+		background: #F5F5F5;
+	}
+	.clearfix::after{
+		content: "";
+		height: 0;
+		display: block;
+		clear: both;
+	}
+	.nav-header{
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.header{
+	padding: 0 2rem;
+	background-color: #68cb78;
+	height: 4rem;
+	line-height: 4rem;
+}
+.logo{
+	display: inline-block;
+	margin: .8rem 0;
+}
+.search{
+	float: right;
+	width: 2.5rem;
+	height: 2.6rem;
+}
+.search a{
+	display: block;
+	margin: .7rem 0;
+	width: 2.5rem;
+	height: 2.6rem;
+	background: url(./image/search.png) no-repeat center;
+}
+.nav{
+	height: 4rem;
+	border-bottom: .2rem solid #68CB78;
+	font-size: 1.6rem;
+	line-height: 4rem;
+	background: #FFFFFF;
+}
+.nav a{
+	display: inline-block;
+	width: 23.2%;
+	text-align: center;
+	text-decoration: none;
+	color: #333;
+}
+.nav .fir{
+	color: #68CB78;
+}
+.back{
+	width: 100%;
+	height: 2rem;
+	background: #F5F5F5;
+	margin-top: 8rem;
+}
+.pisn{
+	background: #FFFFFF;
+}
+.pisn p{
+	font-size: 1.6rem;
+	padding: 1rem 0.5rem;
+}
+input{
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: #68CB78;
+}
+.goods{
+	height: 8rem;
+	padding: 0 0.5rem;
+	border-top: .1rem solid #DCDCDC;
+	/*line-height: 8rem;*/
+	padding: 1rem 4rem;
+	position: relative;
+	background: #FFf;
+	border-bottom: .1rem solid #DCDCDC;
+}
+.inp{
+	position: absolute;
+	left: .5rem;
+	top: 40%;
+}
+.goods-r{
+	width: 100%;
+	height: 8rem;
+}
+.goods-r img{
+	width: 7rem;
+	height: 7rem;
+	float: left;
+	display: block;
+}
+.title{
+	font-size: 1.3rem;
+	color: #333333;
+	padding: .5rem ;
+}
+.cale{
+	width: 100%;
+	margin-left: 9rem;
+	padding: .5rem;
+}
+.cale span{
+	padding: .5rem;
+	color: #999999;
+}
+.math{
+	margin-left: 8rem;
+	padding: .5rem;
+	width: 10rem;
+	height: 1rem;
+	font-size: 1.5rem;
+	border: .1rem solid #DCDCDC;
+	text-align: center;
+}
+.math span{
+	padding: 0 .5rem;
+}
+.price{
+	position: absolute;
+	right: 2.5rem;
+	bottom: 1rem;
+}
+.price p i{
+	width: 1.1rem;
+	height: 1.1rem;
+	display: inline-block;
+	background: url(./image/mon.png) no-repeat center;
+}
+.price p{
+	color: red;
+}
+.account{
+	width: 100%;
+	height: 4rem;
+	position: fixed;
+	bottom: 0;
+	line-height: 4rem;
+}
+.account-r{
+	float: right;
+}
+.account-r p i{
+	width: 1.1rem;
+	height: 1.1rem;
+	display: inline-block;
+	background: url(./image/mon.png) no-repeat center;
+}
+.account-r p{
+	color: red;
+	display: inline-block;	
+}
+.sele{
+	width: 9rem;
+	background: #999999;
+	display: inline-block;
+	text-align: center;
+	font-size: 1.6rem;
+	color: #FFFFFF;
+}
+</style>
+	</head>
+	<body>
+		<div class="nav-header">
+			<div class="header">
+				<a href="" class="logo">
+					<img src="image/logo.png">	
+				</a>
+				<div class="search">
+					<a href=""></a>
+				</div>
+			</div>
+			<div class="nav">
+				<a href="">首页</a>
+				<a href="fenlei.html">分类</a>
+				<a href="my.html"  class="fir">购物车</a>
+				<a href="my.html">我的</a>
+			</div>
+		</div>
+		<div class="back"></div>
+		<div class="pisn">
+			<p><input type="checkbox" name="pisn" value="" />PISN</p>
+		</div>
+		<div class="goods">
+			<input type="checkbox" name="goods" id="goods" value="" class="inp"/>
+			<div class="goods-r clearfix">
+				<img src="./image/p13.jpg"/>
+				<span class="title">现货PISN休闲百搭学院风2017夏季衬衫女天丝衬衫女宽松牛仔衬衣外套</span>
+				<div class="cale">
+					<span>水洗蓝</span>
+					<span>s</span>
+				</div>
+				<div class="math">
+					
+					<span class="jian">-</span>
+					<span class="shuzi" id=new>
+							1
+					</span>
+					<span class="add">+</span>
+				</div>
+			</div>
+			<div class="price">
+				<p>
+				<i></i>69.9
+				
+				</p>
+			</div>
+		</div>
+		<div class="account">
+			<input type="checkbox" name="account" id="account" value="" />
+			<span>全选</span>
+			<div class="account-r">
+			<p>
+				<i></i>0.00</p>
+				<span class="sele">请选择</span>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript">
+			
+			$(".add").click(function(){
+			var a=$(".shuzi").text()
+			a++;
+			$(".shuzi").html(a);
+			});
+			$(".jian").click(function(){
+			var a=$(".shuzi").text();
+			if(a>1){
+			a--;
+			$(".shuzi").html(a);
+			}
+			if (a<=1) {
+				return 1;
+			}
+			})
+		</script>
+
+	</body>
+</html>

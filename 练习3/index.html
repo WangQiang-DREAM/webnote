@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<table border="1">
+				<tr><th v-for="todo in todos">
+					{{todo.text}}
+				</th></tr>
+				<tr  v-for="todo in person">
+					<td v-for="(value,key) in todo">
+						{{value}}
+					</td>
+					
+				</tr>
+			</table>
+			<!--<tr>
+			<th v-for="todo in todos">
+				{{todo.text}}
+			</th>
+		</tr>-->
+		</div>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#box",
+				data:{
+					todos:[
+						{ text:'姓名'},
+						{ text:'年龄'},
+						{ text:'专业'},
+						{ text:'班级'},
+						{ text:'爱好'},
+						{ text:'出生'},
+					
+					],
+					person:[{ 
+						name:'wq',
+						  age:'21',
+						  pro:'计算机',
+						 class:'141',
+						 love:'音乐',
+						 birth:'1995',
+					},
+						 
+						 {	name:'qq',
+						 	age:'21',
+						  	pro:'计算机',
+						 	class:'141',
+						 	 love:'音乐',
+							 birth:'1995',
+						},
+						{ name:'rq',
+						  age:'21',
+						  pro:'计算机',
+						 class:'141',
+						  love:'音乐',
+						 birth:'1995',
+					},
+						 { name:'w2q',
+						  age:'21',
+						  pro:'计算机',
+						 class:'141',
+						  love:'音乐',
+						 birth:'1995',
+					},
+						 
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

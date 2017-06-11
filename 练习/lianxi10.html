@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>zhuce</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+	body{
+		position: relative;
+	}
+	.bu{
+		position: absolute;
+		bottom: -30px ;
+		right: 30px;
+	}
+	.bu1{
+		position: absolute;
+		bottom: -30px ;
+		right: 100px;
+	}
+	tr{
+		width: 900px;
+	}
+	th{
+		width: 177px;
+		height: 40px;
+	
+	}
+	td{
+		width: 180px;
+		height: 40px;
+		border: 1px solid #dcdcdc;
+		text-align: center;
+		line-height: 40px;
+	}
+	.td1{
+		width: 100px;
+		height: 40px;
+		border: 1px solid #dcdcdc;
+		text-align: center;
+		line-height: 40px;
+	}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>邮箱</th>
+			<th>电话</th>
+			<th>密码</th>
+		</thead>
+		<tbody></tbody>
+	</table>
+	<button class="bu1" onclick="prePage()">上一页</button><button class="bu" onclick="nextPage()">下一页</button>
+	
+	<script type="text/javascript">
+	// var tpl="";
+	//    $.ajax({
+	//    		type:'get',
+	//    		dataType:'json',
+	//    		url:'http://test.zhituteam.com/chat/index.php',
+	//    		data:{
+	//    			c:"demo",
+	//    			a:"getlist",
+	   			
+	//    		 },
+	//    success:function(res){
+	//    	if (res.status=="ok") {
+	//    		console.log(res)
+	//    		 aa=res.result;
+	//    		for(var i=0;i<aa.length;i++){
+	//    			tpl="<tr><td>"+aa[i].name+"</td><td>"+aa[i].age+"</td><td>"+aa[i].email+"</td><td>"+aa[i].phone+"</td><td>"+aa[i].password+"</td><td class='td1'><a href=>修改</a></td><td class='td1'><a href=>删除</a></td></tr>";
+	//    				$("body").append(tpl);
+	//    			}
+	//    		}
+	//    	},
+	//    });
+	var offset = 0;
+        getList(0);
+        function getList(beginoffset){
+            var tpl = "";
+            $.ajax({
+                url:"http://test.zhituteam.com/chat/index.php",
+                 type:"get",
+                dataType:"json",
+                data:{
+                    c:"demo",
+                    a:"getlist",
+                    offset:beginoffset,
+                    limit:10
+                },
+                success:function(res){
+                    if(res.status=="ok"){
+                        var result = res.result;
+                        for(var i=0;i<result.length;i++){
+                            tpl+="<tr><td>"+result[i].name+"</td><td>"+result[i].age+"</td><td>"+result[i].email+"</td><td>"+result[i].phone+"</td><td>"+result[i].password+"</td><td><span class='tdt'>"+result[i].id+"</span><button class='tdd'>删除</button><a href=''>修改</a></td></tr>"
+                        };
+                        if(res.result.length==0){
+                            offset = offset-10
+                            alert("最后一页");
+                            return false;
+                        }else {
+                            $("table tbody").append(tpl);
+                        }
+                    }else {
+                        alert(res.status)
+                    }
+                }
+            });
+        };
+ 
+        function prePage(){
+            offset = offset-10;
+            if(offset<0){
+                offset=0;
+                alert("最前面一页");
+                return false;
+            }else {
+                getList(offset);
+            }
+
+        }
+    
+        function nextPage(){
+            offset = offset+10;
+            getList(offset);
+        }
+        function loadmore(){
+            offset = offset+10;
+            getList(offset);
+        }
+
+        $("table tbody").on("click",".tdd",function(){
+        	var that=$(this);
+        	 var ida=parseInt($(this).siblings(".tdt").text());
+        	$.ajax({
+                url:"http://test.zhituteam.com/chat/index.php",
+                type:"get",
+                dataType:"json",
+                data:{
+                    c:"demo",
+                    a:"del",
+                  	id:ida
+                   
+                },
+                 success:function(res){
+                 	if(res.status=="ok"){
+                 		that.parents("tr").remove();
+                 	}
+
+                 }
+
+           });
+        });
+	   </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>my1</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style>
+body,html,div,ul,li{
+	margin: 0;
+	padding: 0;
+	font-size: 62.5%;
+}
+body{
+	background: #F5F5F5;
+	position: relative;
+}
+.clearfix::after{
+	content: "";
+	height: 0;
+	display: block;
+	clear: both;
+}
+.nav-header{
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.header{
+	padding: 0 2rem;
+	background-color: #68cb78;
+	height: 4rem;
+	line-height: 4rem;
+}
+.logo{
+	display: inline-block;
+	margin: .8rem 0;
+}
+.search{
+	float: right;
+	width: 2.5rem;
+	height: 2.6rem;
+}
+.search a{
+	display: block;
+	margin: .7rem 0;
+	width: 2.5rem;
+	height: 2.6rem;
+	background: url(./image/search.png) no-repeat center;
+}
+.nav{
+	height: 4rem;
+	border-bottom: .2rem solid #68CB78;
+	font-size: 1.6rem;
+	line-height: 4rem;
+}
+.nav a{
+	display: inline-block;
+	width: 23.2%;
+	text-align: center;
+	text-decoration: none;
+	color: #333;
+}
+.nav .for{
+	color: #68CB78;	
+}
+.content{
+	margin-top: 8rem;
+	width: 100%;
+	height: 6rem;
+	color: #999999;
+	text-align: center;
+	line-height: 6rem;
+	border-bottom: .05rem solid #999999;
+	font-size: 1.6rem;
+}
+.conta{
+	text-align: center;
+	font-size: 1.5rem;
+}
+.top{
+	color: #666;
+	padding: .5rem 0 ;
+}
+.login{
+	display: block;
+	margin: 0 auto;
+	border-radius: .4rem;
+	width: 90%;
+	height: 3rem;
+	line-height: 3rem;
+	color: #fff;
+	background: #68CB78;
+}
+.login a{
+	text-decoration: none;
+	color: #333333;
+	font-size: 1.6rem;
+}
+.zhuce{
+	padding: .5rem 0;
+	color: #999999;
+	font-size: 1.6rem;
+}
+.zhuce a{
+	text-decoration: none;
+	color: #68CB78;
+}
+.addr{
+	width: 100%;
+	height: 6rem;
+	margin-top: 9rem;
+	text-align: center;
+	border: .1rem solid #DCDCDC;
+	line-height: 6rem;
+	font-size:1.8rem;
+}
+.address{
+	width: 96%;
+	padding: 3%;
+	/*height: 14rem;*/
+	background: #fff;
+	position: absolute;
+	top: 53rem;
+	display: none;
+}
+.name{
+	width: 100%;
+	height: 2.5rem;
+	margin: 0rem auto;
+	display: block;
+	border: .1rem solid #DCDCDC;
+	margin: 1rem 0;
+}
+.phone{
+	width: 100%;
+	height: 2.5rem;
+	display: block;
+	margin: 0 auto;
+	border: .1rem solid #DCDCDC;
+	margin: 1rem 0;
+}
+.city0,.city1,.city2{
+	width: 28%;
+	height: 2.5rem;
+	border: .1rem solid #DCDCDC;
+	margin: .5rem;
+}
+.detail{
+	width: 95%;
+	height: 2.5rem;
+	border: .1rem solid #DCDCDC;
+	margin: .5rem;
+}
+.submit{
+	width: 90%;
+	height: 3rem;
+	background: #68CB78;
+	color: #FFFFFF;
+	font-size: 1.6rem;
+	text-align: center;
+	line-height: 3rem;
+	margin: 1rem auto;
+	border-radius: .2rem;
+}
+.undo{
+	float: right;
+	display: inline-block;
+}
+</style>
+	</head>
+	<body>
+	<div class="nav-header">
+			<div class="header">
+				<a href="" class="logo">
+					<img src="image/logo.png">	
+				</a>
+				<div class="search">
+					<a href=""></a>
+				</div>
+			</div>
+			<div class="nav">
+				<a class='first'>首页</a>
+				<a  class="second">分类</a>
+				<a  class="third">购物车</a>
+				<a  class="for">我的</a>
+			</div>
+		</div>
+		<!--<div class="content">
+			还未登录，请使用账号进行登录
+		</div>
+		<div class="conta">
+			<p class="top">登录账号后，可以使用订单查询，使用优惠卷</p>
+			<p class="login">
+				<a href="login.html">登录</a>
+			</p>
+			<p class="zhuce">
+				还没有豆瓣账号，<a href="zhuce.html">注册</a>
+			</p>-->
+		<!--</div>-->
+		
+		<div class="addr">
+			新增收货地址
+		</div>
+		
+		<div class="address">
+			<p>新增地址  <span class="undo">
+				取消
+			</span></p>
+			<input type="text" name="name"  placeholder="姓名" /  class="name">
+			<input type="text" name="phone" placeholder="电话" / class="phone">
+				<input type="text" name="provice" placeholder="选择省份"/ class="city0">
+				<input type="text" name="city" placeholder="选择城市"/  class="city1">
+				<input type="text" name="area"  placeholder="选择地区"/ class="city2">
+				<input type="text" name="address"  placeholder="详细地址"/ class="detail">
+			<div class="submit">
+				保存
+			</div>
+		</div>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/function.js"></script>
+		<script>
+			$(".addr").click(function(){
+				$(".address").animate({marginTop:"-26rem"},500);
+				$(".address").show()
+			});
+			$(".undo").click(function(){
+				$(".address").animate({marginTop:"+26rem"},600);
+				$(".address").hide()
+			});
+//		$(".submit").click(function(){
+//			    var id=parseInt(getParam('id'));
+//			    console.log(id)
+//				var name=$("name").val();
+//				var phone=$(".phone").val();
+//				var provice=$(".city0").val();
+//				var city=$(".city1").val();
+//				var area=$(".city2").val();
+//			$.ajax({
+//				type:"post",
+//				url:"http://ztshop.net/index.php/Home/address/add",
+//				dataType:"json",
+//				data:{
+//					user_name:name,
+//					user_phone:phone,
+//					provice:provice,
+//					city:city,
+//					area:area,
+//					user_id:id,
+//				},
+//				success:function(res){
+//					console.log(res)
+//					
+//				}
+//			});
+//		})
+		</script>
+	</body>
+</html>

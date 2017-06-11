@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>list</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+	body,html,ul,li{
+		margin: 0;
+		padding: 0;
+		font-size: 62.5%;
+	}
+	html,body{
+    width:100%;
+    height:100%;
+}
+	body{
+		background:url(./image/ba.png);
+		position: relative;
+	    background-size: cover;
+	    overflow: auto;
+	}
+	.content{
+		margin: 0 auto;  
+		width: 93%;
+		height: 94%; 
+		
+		border-radius:.5rem ;
+		position: relative;
+		top: 3%;
+	}
+	.con-l{
+		width: 23%;
+		height: 94%;
+		padding: 2% 2% 6% 2%;
+		background:rgba(0,0,0, 0.5) 0%;
+		float: left;
+		position: relative;
+	}
+	img{
+		display: block;
+		width: 1.6rem;
+		height: 1.6rem;
+		/*background-color: #fff*/;
+	} 
+	.right{
+		margin-bottom:.2rem; 
+	}
+	ul li{
+		list-style: none;
+	}
+	.tdd{
+		list-style: none;
+		/*width: 100%;*/
+		/*height: 4rem;*/
+		line-height: 2rem;
+		padding: 1rem 0;
+		color: #fff;
+		text-align: center;
+	/*	border: .1rem solid #fff;*/
+		font-size: 1.4rem;
+		text-align: left;
+	}
+
+	.con-r{
+		float: left;
+		width: 96%;
+		height: 96%;
+		padding: 2%;
+		background-color: #dcdcdc;
+		overflow: scroll;
+	}
+	.hide{
+		display: none;
+	}
+	.ch{
+		border-left:1px solid #fff 
+	}
+	.left{
+		position: absolute;
+		bottom: 1rem;
+		left: 15%;
+	}
+	.right1{
+		position: absolute;
+		bottom: 1rem;
+		left: 22%;
+	}
+	.shouqi{
+		position: absolute;
+		bottom: 1rem;
+		left: 2%;
+		outline: none;
+		border:none;
+		border-radius: .7rem;
+		color: #fff;
+		background-color: #ff3366;
+	}
+	.che{
+		width: 68%;
+	}
+	p{
+		font-size: 1.6rem;
+		line-height: 2.1rem;
+	}
+</style>
+</head>
+<body>	
+	<div class="content">
+	<img src="./image/right.png" class="right">
+		<div class="con-l hide">	
+			
+		</div>
+		<a class="left hide" onclick="prePage()">
+			<img src="./image/left.png">
+		</a>
+		<a class="right1 hide" onclick="nextPage()">
+			<img src="./image/right.png">
+		</a>
+		<button class="shouqi hide">收起</button>
+		<div class="con-r">
+
+		</div>	
+	</div>
+	<script type="text/javascript">
+
+	$(".right").click(function(){
+		$(".con-l").show();
+		$(".left").show();
+		$(".right1").show();
+		$(".shouqi").show();
+		$(".right").hide();
+		$(".con-r").addClass("ch").addClass("che");
+	})
+	$(".shouqi").click(function(){
+		$(".con-l").hide();
+		$(".left").hide();
+		$(".right1").hide();
+		$(".shouqi").hide();
+		$(".right").show();
+		$(".con-r").removeClass("ch").removeClass("che");
+	})
+	var offset = 0;
+        getList(0);
+        function getList(beginoffset){
+            var tpl = "";
+            $.ajax({
+                url:"http://test.zhituteam.com/zttesttp/index.php?m=home&c=blog&a=lists",
+                 type:"get",
+                dataType:"json",
+                data:{
+                    m:"home",
+                    c:"blog",
+                    a:"lists",
+                    offset:beginoffset,
+                    limit:11
+                },
+                success:function(res){
+                	console.log(res)
+                    if(res.status=="ok"){
+                        var result = res.lists;
+                        for(var i=0;i<result.length;i++){
+                            tpl+="<ul><li class='tdd'>"+result[i].title+"</li><li class='ss'><span class='hide'>"+result[i].id+"</span></li><ul>"
+                        };
+                        if(res.lists.length==0){
+                            offset = offset-10
+   
+                            return false;
+                        }else {
+                            $(".con-l").html(tpl);
+                        }
+                    }else {
+                        alert(res.status)
+                    }
+                  
+                }
+            });
+        };
+ 
+        function prePage(){
+            offset = offset-10;
+            if(offset<0){
+                offset=0;
+            
+                return false;
+            }else {
+                getList(offset);
+            }
+
+        }
+    
+        function nextPage(){
+            offset = offset+10;
+            getList(offset);
+        }
+        function loadmore(){
+            offset = offset+10;
+            getList(offset);
+        }
+
+
+
+
+
+
+
+
+
+
+      $(".con-l").on("click",".tdd",function(){
+      	// console.log(tdd)
+         	// alert(11);
+        	 var that=$(this);
+        	 var ide=parseInt(that.siblings(".ss").children().text());
+        	 console.log(ide);
+	        	$.ajax({
+	        	type:"get",
+	        	dataType:'json',
+	        	url:'http://test.zhituteam.com/zttesttp/index.php?m=home&c=blog&a=info',
+	        	data:{
+	        		
+	        		id:ide
+	        	},
+	        	success:function(res){
+	        		console.log(res)
+	        		 
+	        		if (res.status=="ok") {
+	        			var result = res.info;
+	        			console.log(result)
+	        		 	// for(var j=0;j<1;j++){
+                            tpe="<p>"+result.content+"</p>"
+                        // };
+                        $(".con-r").html(tpe);
+	        		}
+	        		else{
+	        			alert(res.mag);
+	        		}
+	        	}
+	        
+	           });
+        });
+       
+	</script>
+</body>
+</html>

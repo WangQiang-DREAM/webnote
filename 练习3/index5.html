@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+			<style type="text/css">
+				input{
+					width: 400px;
+					height: 25px;
+					margin: 10px;
+					border-radius: 5px;
+					outline: none;
+					border: 1px solid #008000;
+					background: #f5f5f5;
+				}
+				#box{
+					padding: 50px;
+					width: 600px;
+					margin: 20px auto;
+					text-align: center;
+					background: #999999;
+					box-shadow: 10px 10px 5px #888888;
+				}
+				.act{
+					margin-left: 25px;
+				}
+				button{
+					border: 1px solid deepskyblue;
+					width: 50px;
+					height: 30px;
+					border-radius: 5px;
+				/*	background: greenyellow;*/
+					color: #333;
+					box-shadow: 2px 2px 2px greenyellow;
+					background: rgb(0,0,0,0.2);
+				}
+				.right{
+					margin-left: 350px;
+				}
+				table{
+					width: 400px;
+					margin: 0 auto;
+					border: 1px solid #00BFFF;
+				}
+			</style>
+	</head>
+	<body>
+		<div id="box">
+				
+					用户名：<input type="text"  v-model="name"/>
+					<br />
+					年龄：<input type="text" v-model="age" class="act"/>
+					<br />
+					<button v-on:click="add">提交</button>
+				<!--	<button v-on:click="cancel"  class="right">取消</button>
+-->			
+			<h2>用户信息表</h2>
+			<table border="1" cellspacing="1" cellpadding="1">
+				<thead>
+				<tr>
+					<th>序号</th>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr v-for="(body,index) in tbody">
+					<td>{{index+1}}</td>
+					<td v-for="(head,index) in thead" v-html="body[head.key]"></td>
+					<td>
+						<button v-on:click="cancel(index)">删除</button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<script src="js/vue.js"></script>
+		<script>
+			var vm=new Vue({
+				el:"#box",
+				name:"",
+				age:"",
+				data:{
+					tbody:[],
+					thead:[{
+						"key":"name",
+						"sem":"姓名"
+					},
+					{
+						"key":"age",
+						"sem":"年龄"
+					},
+					]
+					},
+				methods:{
+					add:function(){		
+						this.tbody.push({name:this.name,age:this.age});
+						this.age="";
+						this.name="";	
+					},
+					cancel:function(index){
+						this.tbody.splice(this.index,1)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

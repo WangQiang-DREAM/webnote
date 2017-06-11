@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lagou</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+	html,body,ul,li,img{
+		margin: 0;
+		padding: 0;
+	}
+	.box{
+		margin: 100px auto;
+		width: 744px;
+   		height: 160px;
+    	position: relative;
+    	overflow: hidden;
+	}
+	.box-l{
+		width: 612px;
+		height: 480px;
+		float: left;
+		position: relative;
+
+	}
+	.box-l ul{
+		height: 480px;
+		position: relative;
+	}
+	.box-r{
+		width: 121px;
+		height: 160px;
+		float: right;
+	}
+	.box-l ul li{
+		list-style: none;
+	}
+	.box-l ul li img{
+		width: 612px;
+		height: 160px;
+	}
+	.box-r ul li{
+		list-style: none;
+		margin-bottom: 5px;
+		border: 3px solid #999;
+	}
+	.box-r ul li img{
+		width: 113px;
+		height: 42px;
+	}
+	.box-l ul li img {
+		float: left;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box-l">
+			<ul>
+				<li><img src="./image/1.jpg"></li>
+				<li><img src="./image/2.JPG"></li>
+				<li><img src="./image/3.PNG"></li>
+			</ul>
+		</div>
+		<div class="box-r">
+			<ul>
+				<li><img src="./image/1.jpg"></li>
+				<li><img src="./image/2.JPG"></li>
+				<li><img src="./image/3.PNG"></li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(".box-r ul li").mouseover(function(){
+		var index=$(this).index();
+		if(index==0)$(".box-l").stop().animate({bottom:"0"},300);
+		if(index==1)$(".box-l").stop().animate({bottom:"+160px"},300);
+		if(index==2)$(".box-l").stop().animate({bottom:"+320px"},300);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>zhuce</title>
+	<style type="text/css">
+	.box{
+		margin:  0 auto;
+		padding: 50px;
+		width: 400px;
+		height: 250px;
+		border: 1px solid #ff6700;
+		background-color: #dcdcdc;
+	}
+	input{
+		margin: 0 10px 20px;
+		width:250px;
+		height: 20px;
+		border: 2px solid #b0b0b0;
+		outline: none;
+		border-radius:5px; 
+	}
+	span{
+		margin: 20px;
+	}
+	a{
+		text-decoration: none;
+		color: #666;
+	}
+	.denglu{
+		display: block;
+		float: right;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		姓名<input type="text" name="name"><br>
+		年龄<input type="text" name ="age"><br>
+		邮箱<input type="text" name="email"><br>
+		电话<input type="text" name="phone"><br>
+		密码<input type="password" name="password"><br>
+		<button class="zhuce">注册</button>
+		<button class="denglu"><a href="file:///D:/workspace/note/webnote/%E7%BB%83%E4%B9%A0/lianxi11.html">已有账号，登录</a></button>
+	</div>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript">
+	// var tpl="";
+	//    $.ajax({
+	//    		type:'get',
+	//    		dataType:'json',
+	//    		url:'http://test.zhituteam.com/chat/index.php',
+	//    		data:{
+	//    			c:"demo",
+	//    			a:"getlist",
+	//    		 },
+	//    success:function(res){
+	//    	if (res.status=="ok") {
+	//    		console.log(res)
+	//    		 aa=res.result;
+	//    		for(var i=0;i<aa.length;i++){
+	//    			tpl="<p><span>"+aa[i].name+"</span><span>"+aa[i].age+"</span><span>"+aa[i].email+"</span><span>"+aa[i].phone+"</span><span>"+aa[i].password+"</span></p>";
+	//    				$("body").append(tpl);
+	//    			}
+	//    		}
+	//    	},
+	//    } );
+	   $(".zhuce").click(function(){
+
+	   			// window.location.href='file:///D:/workspace/note/webnote/%E7%BB%83%E4%B9%A0/lianxi10.html'
+	   	
+	   		$.ajax({
+				type:'post',
+				dataType:'json',
+				url:'http://test.zhituteam.com/chat/index.php?c=demo&a=reg',
+				data:{
+					name:$("input[name='name']").val(),
+					age:$("input[name='age']").val(),
+					email:$("input[name='email']").val(),
+					phone:$("input[name='phone']").val(),
+					password:$("input[name='password']").val(),
+				},
+				success:function(res){
+					window.location.href='file:///D:/workspace/note/webnote/%E7%BB%83%E4%B9%A0/lianxi10.html',
+					 $("body").append("<p><span>"+$("input[name='name']").val()+"</span><span>"+$("input[name='age']").val()+"</span><span>"+$("input[name='email']").val()+"</span><span>"+$("input[name='phone']").val()+"</span><span>"+$("input[name='password']").val()+"</span></p>")
+				}
+			})
+			   })
+	</script>
+</body>
+</html>

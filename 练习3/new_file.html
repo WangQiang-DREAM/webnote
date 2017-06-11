@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.click{
+				width: 50px;
+				height: 50px;
+				display: block;
+				background: #008000;
+			}
+			.img{
+				width: 200px;
+				height: 200px;
+				overflow: hidden;
+			}
+			.img ul li{
+				width: 200px;
+				height: 200px;
+				list-style: none;
+				float: left;
+			}
+			.a{
+				background: #000000;
+			}
+			.b{
+				background: #008000;
+			}
+			.c{
+				background: #00BFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" name="define" id="define" value="" />
+		<button onclick="active()">取值</button>
+		<br>
+		<p id=demo></p>
+		<script type="text/javascript">
+			function active(){
+				var a=document.getElementById("define")
+				alert(a.value.length)
+			}
+			
+			
+			
+			var arr=[1,2,2,3,3,4,4,5,6,7,9,9];
+			var array=[];
+			function noRepeat(){
+				for (var i=0;i<arr.length;i++) {
+					if (array.indexOf(arr[i])<0) {
+						array.push(arr[i])
+					}
+				}
+			};
+			noRepeat();
+			var a=document.getElementById("demo");
+			a.innerText=array
+//			document.write(array)
+		</script>
+	</body>
+</html>

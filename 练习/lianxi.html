@@ -43,19 +43,19 @@
 	<script type="text/javascript">
 	$(function(){
 		$(".show").click(function(){
-			$(".box").show("slow");
-			alert(111);
+			$(".box").show("slow");//点击事件后，使box显示
+			alert(111);//检查
 		});
 		$(".change").click(function(){
-			$("box-4").addClass("color");
+			$("box-4").addClass("color");//添加类
 		})
 		$(".hide").click(function(){
 			$(".box-2").hide("slow");
 			alert(11);
 		});
 		$(".slide").click(function(){
-			$(".box-3").slideDown("slow");
-			$(".box-3").css({"color":"#333","background":"#c00"});
+			$(".box-3").slideDown("slow");//下滑事件
+			$(".box-3").css({"color":"#333","background":"#c00"});//添加css
 			alert(11);
 		});
 	});

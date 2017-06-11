@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>xiangqing</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<style>
+body,html,div,ul,li,p{
+	margin: 0;
+	padding: 0;
+	font-size: 62.5%;
+}
+.clearfix::after{
+	content: "";
+	height: 0;
+	display: block;
+	clear: both;
+}
+.photo{
+	width: 100%;
+	border-bottom: .1rem solid #dcdcdc;
+}
+.photo img{
+	width: 100%;
+	height: auto;
+}
+.shop{
+	padding: .2rem 3%;
+	font-size:1.5rem;
+	border-bottom: .1rem solid #dcdcdc;
+}
+.shop p{
+	padding: .5rem 0;
+	font-size: 1.5rem;
+}
+.price a{
+	font-size: 2rem;
+	text-decoration: none;
+	color: darkred;
+}
+.price a i{
+	margin-right: .5rem;
+	width: 2rem;
+	height: 2rem;
+	display: inline-block;
+	background: url(./image/mon.png);
+}
+.price span{
+	display: inline-block;
+	margin: .8rem 0;
+}
+.fea{
+	height: 4.5rem;
+	font-size: 1.6rem;	
+	line-height: 3rem;
+}
+.fea a{
+	color: #8B0000;
+	text-decoration: none;
+}
+.right{
+	display: inline-block;
+	float: right;
+}
+.hui{
+	padding: 1rem;
+	border: .1rem solid #DCDCDC;
+	line-height: 5rem;
+	font-size: 1.4rem;
+}
+.hui span{
+	color: #8B0000;
+	margin-right: .2rem;
+}
+.hui a{
+	padding: .5rem .6rem;
+	margin: 0 0.5rem;
+	color: #999999;
+	border: .1rem solid #DCDCDC;
+	border-radius: 1.5rem;
+	text-align: center;
+}
+.colors{
+	padding: 1.5rem 1rem;
+	font-size: 1.5rem;
+	color: #999999;
+	border: .1rem solid #DCDCDC;
+}
+.colors a{
+	padding: .5rem 2rem;
+	margin-left: 1rem;
+	border-radius: 1.5rem;
+	border: .1rem solid #DCDCDC;
+	text-align: center;
+	background: #68CB78;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.math{
+	padding: 1.5rem 1rem;
+	font-size: 1.5rem;
+}
+.math span{
+	font-size: 1.8rem;
+	font-weight: bold;
+	margin: 1rem;
+}
+.jian,.add{
+	display: inline-block;
+	padding: .2rem;
+	width: 2rem;
+	height: 2rem;
+	text-align: center;
+	color: #FFFFFF;
+	background: #68CB78;
+	border-radius:50% ;
+}
+.shuzi{
+	padding: 1rem 3rem;
+	background: #DCDCDC;
+	border-radius: 2rem;
+}
+.tianjia{
+	float: right;
+	background: #8B0000;
+	width: 80%;
+	height: 4rem;
+	font-size: 1.7rem;
+	font-weight: 500;
+	color: #fff;
+	text-align: center;
+	line-height: 4rem;
+	margin-top: 1rem;
+	position: relative;
+}
+.mount{
+	display: block;
+	width: 2rem;
+	height: 2rem;
+	background: #007AFF;
+	color: #FFFFFF;
+	font-size: 1rem;
+	position: absolute;
+	border-radius: 50%;
+	left: -.7rem;
+	top: -.7rem;
+	line-height: 2rem;
+	text-align: center;
+}
+</style>
+	</head>
+	<body>
+		<div class="photo">
+			<img src="./image/p111.jpg" alt="" />
+		</div>
+		<div class="shop">
+			<p>韩国直邮 绿吕-洗发450ml +180ml</p>
+			<div class="price">	
+				<a href=""><i></i>69.9</a>
+				<span>
+					<img src="./image/QQ1.png" alt="" />
+				</span>
+			</div>
+			<div class="fea">
+				<span>运费：0.00 <a href="">非包邮区域</a></span>
+				<a href="" class="right"><img src="./image/right.png"/></a>
+			</div>
+		</div>
+		<div class="hui">
+			<span>优惠券</span>
+			<a href="">满99-5</a><a href="">满399-20</a><a href="">满599-15</a><a href="">满899-50</a>
+		</div>
+		<div class="colors">
+			<span >
+				颜色
+			</span>
+			<a href="">绿色</a>
+		</div>
+		<div class="math">
+			<span>
+				数量
+			</span>
+			<span class="jian">-</span>
+			<span class="shuzi" id=new>
+					1
+			</span>
+			<span class="add">+</span>
+		</div>
+		<div class="tianjia">
+			添加到购物车
+			<span class="mount">
+				
+			</span>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript">
+			
+			$(".add").click(function(){
+			var a=$(".shuzi").text()
+			a++;
+			$(".shuzi").html(a);
+			});
+			$(".jian").click(function(){
+			var a=$(".shuzi").text();
+			if(a>1){
+			a--;
+			$(".shuzi").html(a);
+			}
+			if (a<=1) {
+				return 1;
+			}
+			});
+//			var id=getParam('id')
+//			$.ajax({
+//				type:"post",
+//				url:"http://ztshop.net/index.php/Home/goods/detail",
+//				dataType:"json",
+//				data:{
+//					id:id,
+//				},
+//				success:function(res){
+//					var photo="";
+//					photo="<div class='photo'><img src="+res.img+"</div>"
+//					$(".photo").html(photo);
+//					var pr="";
+//					pr="<div class='shop'><p>"+res.name+"</p><span>"+res.desc+"</span></div>";
+//					$("shop").html(pr);
+//				}
+//				
+//			});
+	 	var id=getParam('id')
+	 	var gid=getParam("goods_id");
+		$(".tianjia").click(function(){
+			window.location.href="shopcar.html?id="+id+""
+		})
+		</script>
+	</body>
+</html>

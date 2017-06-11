@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+<style type="text/css">
+	.clearfix::after{
+	height: 0;
+	content: "";
+	display: block;
+	clear: both;
+}
+	.box{
+		width: 1226px;
+		height: 460px;
+		position: relative;
+		overflow: hidden;
+	}
+	.next{
+		position: absolute;
+		right: 0px;
+		top: 230px;
+		opacity: 0.4;
+		cursor: pointer;
+	}
+	.prev{
+		position: absolute;
+		left: 50px;
+		top: 230px;
+		opacity: 0.4;
+		cursor: pointer;
+	}
+	.imgs{
+		width: 6130px;
+		height: 460px;
+	}
+	.imgs li{
+		float: left;
+		list-style: none;
+	}
+	.list{
+		width: 200px;
+		height: 20px;
+		position: absolute;
+		right: -30px;
+		bottom: 0px;
+	}
+	.list li{
+		width: 20px;
+		height: 20px;
+		background-color:#999999; 
+		border: 1 px solid #666;
+		border-radius: 50%;
+		float: left;
+		list-style: none;
+		text-align: center;
+		margin-right: 5px;
+	}
+	.list li:hover{
+		color: #fff;
+		background-color:#b0b0b0;
+		cursor: pointer; 
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		<img src="./image/left.png" class="prev">
+		<img src="./image/right11.png" class="next">
+		<ul class="imgs clearfix">
+			<li><img src="./image/11.jpg"></li>
+			<li><img src="./image/22.jpg"></li>
+			<li><img src="./image/33.jpg"></li>
+			<li><img src="./image/44.jpg"></li>
+			<li><img src="./image/55.jpg"></li>
+		</ul>
+		<ul class="list">
+			<li class="index0">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+	 var curIndex = 0, //当前index
+      imgLen = $(".imgs li").length; //图片总数
+     // 定时器自动变换2.5秒每次
+  var autoChange = setInterval(function(){ 
+    if(curIndex < imgLen-1){ 
+      curIndex ++; 
+    }else{ 
+      curIndex = 0;
+    }
+    //调用变换处理函数
+    changeTo(curIndex); 
+  },2500);
+   //左箭头滑入滑出事件处理
+  $(".prev").hover(function(){ 
+    //滑入清除定时器
+    clearInterval(autoChange);
+  },function(){ 
+    //滑出则重置定时器
+    autoChangeAgain();
+  });
+  //左箭头点击处理
+  $(".prev").click(function(){ 
+    //根据curIndex进行上一个图片处理
+    curIndex = (curIndex > 0) ? (--curIndex) : (imgLen - 1);
+    changeTo(curIndex);
+  });
+  //右箭头滑入滑出事件处理
+  $(".next").hover(function(){ 
+    //滑入清除定时器
+    clearInterval(autoChange);
+  },function(){ 
+    //滑出则重置定时器
+    autoChangeAgain();
+  });
+  //右箭头点击处理
+  $(".next").click(function(){ 
+    curIndex = (curIndex < imgLen - 1) ? (++curIndex) : 0;
+    changeTo(curIndex);
+  });
+  //对右下角按钮index进行事件绑定处理等
+  $(".List").find("li").each(function(item){ 
+    $(this).hover(function(){ 
+      clearInterval(autoChange);
+      changeTo(item);
+      curIndex = item;
+    },function(){ 
+      autoChangeAgain();
+    });
+  });
+  //清除定时器时候的重置定时器--封装
+  function autoChangeAgain(){ 
+      autoChange = setInterval(function(){ 
+      if(curIndex < imgLen-1){ 
+        curIndex ++;
+      }else{ 
+        curIndex = 0;
+      }
+    //调用变换处理函数
+      changeTo(curIndex); 
+    },2500);
+    }
+  function changeTo(num){ 
+    var goLeft = num * 400;
+    $(".imgs").animate({left: "-" + goLeft + "px"},500);
+    $(".infoList").find("li").removeClass("infoOn").eq(num).addClass("infoOn");
+    $(".List").find("li").removeClass("indexOn").eq(num).addClass("indexOn");
+  }
+	// $(".prev").click(function(){
+	// 		$(".imgs").animate({right:"+=1226px"},2000,function(){
+	// 			var firstLi=$(".imgs li:first");
+	// 			var lastLi=$(".imgs li:last");
+	// 			firstLi.insertAfter(lastLi);
+	// 			$(".imgs").css("right","1226px");
+	// 		});
+	// 	});
+	// 	$(".next").click(function(){
+	// 		$(".imgs").animate({right:"-=1226px"},2000,function(){
+	// 			var firstLi=$(".imgs li:first");
+	// 			var lastLi=$(".imgs li:last");
+	// 			lastLi.insertBefore(firstLi);
+	// 			$(".imgs").css("right","1226px");
+	// 		});
+	// 	});
+	// 		$(".list li").click(function(){
+	// 	var index=$(this).index();
+		
+	// 	});
+	</script>
+</body>
+</html>

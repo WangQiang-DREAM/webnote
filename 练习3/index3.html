@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul li{
+				text-align: center;
+				width: 25px;
+				list-style: none;
+				padding: 10px;
+				border: 1px solid #000;
+				cursor: pointer;
+			}
+			.active{
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul id="app">
+				<li  v-for="(list,index) in data" v-on:click="change(index)" v-bind:class="val[index]?'active':''">{{list}}</li>	
+			</ul>
+		</div>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var am=new Vue({
+				el:"#app",
+				data:{
+					data:[1,2,3,4,5,],
+					val:[true,false,false,false,false],
+//					changeColor:{
+//						
+//					}
+				},
+				methods:{
+					change:function(index){
+						for (var i=0;i<this.val.length;i++) {
+							if (i==index) {
+								this.val.splice(i,1,true);
+//不会触发数组更新					this.val[i]=true;
+//								console.log(this.val)
+							} else{
+								this.val[i]=false;
+							}
+						}
+					}
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+	html,body,ul,li,img{
+		margin: 0;
+		padding: 0;
+	}
+	.clearfix::after{
+		height: 0;
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.photo{
+		margin: 0 auto;
+		width: 400px;
+		height: 250px;
+		position: relative;
+		overflow: hidden;
+	}
+	.photo ul{
+		width: 2000px;
+		position: relative;
+		right: 400px;
+	}
+	.photo ul li{
+		width: 400px;
+		height: 250px;
+		float: left;
+		list-style: none;
+	}
+	.photo ul li img{
+		width: 400px;
+		height: 250px;
+	}
+	.left{
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top:0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		z-index: 999;
+		border: none;
+		border-radius: 2px;
+		outline: none;
+	}
+	.left img{
+		width: 30px;
+		height: 30px;
+		background:rgba(0,0,0,0.7);
+		/*position: relative;
+		right: 5px;
+		bottom: 1px;
+		border-radius: 2px;*/
+
+	}
+	.right{
+		height: 30px;
+		width: 30px;
+		position: absolute;
+		top:0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		z-index: 999;
+	}
+	.right img{
+		width: 30px;
+		height: 30px;
+		background:rgba(0,0,0,0.7);
+		/*position: relative;
+		right: 5px;
+		bottom: 1px;
+		border-radius: 2px;*/
+	}
+	</style>
+</head>
+<body>
+	<div class="photo">
+	<button class="left"><img src="./image/left.png"></button>
+		<ul class="box clearfix">
+			<li><img src="./image/11.jpg"></li>
+			<li><img src="./image/22.jpg"></li>
+			<li><img src="./image/33.jpg"></li>
+			<li><img src="./image/44.jpg"></li>
+			<li><img src="./image/55.jpg"></li>	
+		</ul>
+		<button class="right"><img src="./image/right.png"></button>
+	</div>
+	<script type="text/javascript">
+		$(".left").click(function(){
+			$(".box").animate({right:"+=400px"},1000,function(){
+				var firstLi=$(".box li:first");
+				var lastLi=$(".box li:last");
+				firstLi.insertAfter(lastLi);
+				$(".box").css("right","400px");
+			});
+		});
+		$(".right").click(function(){
+			$(".box").animate({right:"-=400px"},1000,function(){
+				var firstLi=$(".box li:first");
+				var lastLi=$(".box li:last");
+				lastLi.insertBefore(firstLi);
+				$(".box").css("right","400px");
+			});
+		});
+
+	</script>
+</body>
+</html>

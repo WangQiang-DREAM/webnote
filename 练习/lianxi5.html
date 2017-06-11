@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	用户名<input type="text" name="" ><br>
+	密码<input type="password"><br>
+	<input type="submit">
+	<script type="text/javascript">
+	$(function(){
+		$("[type='submit']").click(function(){
+			var Name=$("[type='text']").val();
+			var passWord=$("[type='password']").val();
+			var name1="user";
+			var password1="123";
+			if(passWord == "" && Name ==""){
+				alert("用户名密码不能为空");
+				return false;
+			};
+			if(Name == ""){
+				alert("用户名不能为空");
+				return false;
+			};
+			if(passWord == ""){
+				alert("密码不能为空");
+				return false;
+			};
+			if(Name!=name1){
+				alert("用户名不对");
+			}
+			if (passWord!=password1) {
+				alert("密码不对")
+			};
+			if(Name==name1&&passWord==password1){
+				alert("登录成功")
+			}
+		})
+	})
+	</script>
+</body>
+</html>
