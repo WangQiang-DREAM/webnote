@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style type="text/css">
+		html,body,h2,div,p,ul,li,span{
+			margin: 0;
+			padding: 0;
+			font-size: 62.5%;
+		}
+		.clearfix::after{
+			content: "";
+			height: 0;
+			clear: both;
+			display: block;
+		}
+		.header{
+			width: 100%;
+			height: 3rem;
+			text-align: center;
+			line-height: 3rem;
+			margin-top: 2rem;
+		}
+		h2{
+			font-size: 1.7rem;
+			color: #333;
+			font-family: "微软雅黑";
+		}
+		.content {
+			width: 100%;
+	
+		}
+		.content ul li{
+			list-style: none;
+			float: left;
+			width: 32.7%;
+			height: 5rem;
+			text-align: center;
+			line-height: 5rem;
+			border: .1rem solid #dcdcdc;
+		}
+		.content ul li a{
+			text-decoration: none;
+			color: #333333;
+			font-size: 1.6rem;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h2>学科分类</h2>
+		</div>
+		<div class="content">
+			<ul class="clearfix">
+				<li v-for="value in cont">
+					<a href="">
+					
+					</a>
+				</li>	
+			</ul>
+		</div>
+		<script src="js/vue.js"></script>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script type="text/javascript">
+		var vm=new Vue({
+				el:".content",
+				data:{
+					cont:[],
+				},
+				mounted:function(){
+			        this.getDrugDetail();
+			        this.isData = false;
+			   },	
+				methods:{
+				 getDrugDetail:function() {
+				$.ajax({
+					type:"get",
+					url:"http://longface.com/home/category/lists",
+					dataType:"json",
+					success:function(res){
+						console.log(res)
+			          this.cont=res
+					}.bind(this)
+				});
+				}
+				}
+					
+		});		
+		</script>
+	</body>
+</html>

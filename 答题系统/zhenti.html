@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>zhenti</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style type="text/css">
+			body,html{
+				font-size: 62.5%;
+			}
+			body,html,div,img,ul,li,a,p,span{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #F5F5F5;
+			}
+			.clearfix::after{
+				content: "";
+				height: 0;
+				clear: both;
+				display: block;
+			}
+		.header{
+			width: 94%;
+			height: 3rem;
+			padding: 1rem 3%;
+			text-align: center;
+			line-height: 3rem;
+			font-size: 2rem;
+			color: #000;
+		/*	border-bottom: .1rem solid #999999;*/
+			background: #FFFFFF;
+		}	
+		.return{
+			display: inline-block;
+			float: left;
+			width: 2.2rem;
+			height: 2.2rem;
+			margin-top:0.5rem ;
+			background: url(img/left.png) no-repeat center;
+			background-size: 2.2rem;
+		}
+		.search{
+			display: inline-block;
+			float: right;
+			width: 2.2rem;
+			height: 2.2rem;
+			margin-top:0.5rem ;
+			background: url(img/wujiaoxing.png) no-repeat;
+			background-size: 2.2rem;
+		}
+		.content{
+			background: #FFFFFF;
+		}
+		.content ul li{
+			padding: .5rem 1.5rem;
+			height: 3rem;
+			line-height: 3rem;
+			border-top:.1rem solid #999999 ;
+		}
+		.content ul li a{
+			text-decoration: none;
+			color: #666;
+			font-size: 1.5rem;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="con">
+		
+		<div class="header">
+			<a href="main4.html" class="return"></a>
+			<span>Java语言程序设计</span>
+			<i class="search"></i>
+		</div>
+		<div class="content">
+			<ul>
+				<li><a href="">32321321321</a></li>
+			</ul>
+		</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#con",
+				data:{
+					list:[],
+				},
+				mounted:function(){
+			        this.getDetail();
+			   },
+			    methods:{
+				 getDetail:function() {
+				 	var pid=getParam("id")
+					$.ajax({
+						type:"post",
+						dataType:"json",
+						url:"http://longface.com/index.php/home/course/getchapter",
+						data:{
+							course_id:pid,
+						},
+						success:function(res){
+							console.log(res)
+						}
+					})
+				 }
+				 }
+			})
+		</script>
+	</body>
+</html>

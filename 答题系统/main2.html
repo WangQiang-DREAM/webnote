@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>main2</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style type="text/css">
+		html,body,h2,div,p,ul,li,span{
+			margin: 0;
+			padding: 0;
+			font-size: 62.5%;
+		}
+		.clearfix::after{
+			content: "";
+			height: 0;
+			clear: both;
+			display: block;
+		}
+		.header{
+			width: 100%;
+			height: 3rem;
+			text-align: center;
+			line-height: 3rem;
+			margin-top: 2rem;
+		}
+		h2{
+			font-size: 1.7rem;
+			color: #333;
+			font-family: "微软雅黑";
+		}
+		.content {
+			width: 100%;
+	
+		}
+		.content ul li{
+			list-style: none;
+			float: left;
+			width: 32.7%;
+			height: 5rem;
+			text-align: center;
+			line-height: 5rem;
+			border: .1rem solid #dcdcdc;
+			font-size: 1.6rem;
+		}
+		.content ul li a{
+			text-decoration: none;
+			color: #333333;
+			font-size: 1.6rem;
+		}
+		.nav{
+			width: 100%;
+			height: 5rem;
+			position: fixed;
+			bottom: 0;
+		}
+		.nav ul{
+			width: 100%;
+		}
+		.nav ul li{
+			list-style: none;
+			float: left;
+			width: 33%;
+			text-align: center;
+			line-height: 2.5rem;
+			padding-top:1rem;
+			
+		}
+		.nav ul li a{
+			text-decoration: none;
+			font-size: 1.6rem;
+		}
+		.ku{
+		
+			display: block;
+			width: 1.5rem;
+			height: 1.5rem;
+			background: url(img/pen.png);
+			background-size:1.5rem ;
+			margin: 0 auto;
+			margin-bottom: 0;
+			
+		}
+		.lei{
+			display: block;
+			width: 1.5rem;
+			height: 1.5rem;
+			background: url(img/fenlei.png);
+			background-size:1.5rem ;
+			margin: 0 auto;
+		}
+		.my{
+			display: block;
+			width: 1.5rem;
+			height: 1.5rem;
+			background: url(img/my.png);
+			background-size:1.5rem ;
+			margin: 0 auto;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h2>学科分类</h2>
+		</div>
+		<div class="content">
+			<ul class="clearfix">
+				<li v-for="(value,key) in cont" v-on:click="turn(key)">
+						{{value.name}}
+				</li>
+			</ul>
+		</div>
+		<div class="nav">
+			<ul>
+				<li>
+					<i class="ku"></i>
+					<span id="">
+						<a href="main.html">题库</a>
+					</span>
+				</li>
+				<li>
+					<i class="lei"></i>
+					<span id="">
+						<a href="">分类</a>
+					</span>
+				</li>
+				<li>
+					<i class="my"></i>
+					<span id="">
+						<a href="">我的</a>
+					</span>
+				</li>
+			</ul>
+		</div>
+		<script src="js/vue.js"></script>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/function.js"></script>
+		<script type="text/javascript">
+		var vm=new Vue({
+				el:".content",
+				data:{
+					cont:[],
+//					isData:true,
+				},
+				mounted:function(){
+			        this.getDrugDetail();
+			        this.isData = false;
+			   },	
+				methods:{
+				 getDrugDetail:function() {
+				$.ajax({
+					type:"get",
+					url:"http://longface.com/home/category/lists",
+					dataType:"json",
+					success:function(res){
+						console.log(res)
+			          this.cont=res.lists
+					}.bind(this)
+				});
+			
+				},
+				turn:function(key){
+					var id =this.cont[key].id;
+					var name=escape(this.cont[key].name);
+					console.log(name)
+					console.log(id);
+					window.location.href="main3.html?id="+id+"&name="+name+""
+				}
+				}	
+				
+		});
+			
+		</script>
+	</body>
+</html>

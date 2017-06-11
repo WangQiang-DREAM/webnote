@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>engineering</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style type="text/css">
+			body,html{
+				font-size: 62.5%;
+			}
+			body,html,div,img,ul,li,a{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				position: relative;
+				background: #F5F5F5;
+			}
+			.ser{
+				width: 96%;
+			/*	height: 3rem;*/
+				padding: 2rem 2% 1rem;
+				background: #888;
+				border-bottom: .1rem solid #FFFFFF;
+				position: absolute;
+				top: 0;
+				display: none;
+			}
+			.ser ul li{
+				padding: .7rem 1.5rem;
+				list-style: none;
+				font-size: 1.6rem;
+				color: #FFFFFF;
+			}
+			.back{
+				margin-top: 21.4rem;
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top:0;
+				background: rgba(0,0,0,0.4);
+			}
+			#searches{
+				width: 80%;
+				height: 2.5rem;
+				border: .1rem solid #333333;
+				border-radius:1.5rem;
+				background: #ffffe0;
+				outline: none;
+				padding: 0 4%;
+				font-size:1.6rem ;
+				color: #999;
+			}
+			.search-1{
+			display: inline-block;
+			float: right;
+			width: 2.8rem;
+			height: 2.8rem;
+			margin-right:0.3rem ;
+			background: url(img/search.png);
+			background-size: 2.8rem;
+		}
+		.clearfix::after{
+			content: "";
+			height: 0;
+			clear: both;
+			display: block;
+		}
+		.header{
+			width: 94%;
+			height: 3rem;
+			padding: 1rem 3%;
+			text-align: center;
+			line-height: 3rem;
+			font-size: 2rem;
+			color: #000;
+			border-bottom: .1rem solid #999999;
+			background: #FFFFFF;
+		}	
+		.return{
+			display: inline-block;
+			float: left;
+			width: 2.2rem;
+			height: 2.2rem;
+			margin-top:0.5rem ;
+			background: url(img/left.png) no-repeat center;
+			background-size: 2.2rem;
+		}
+		.search{
+			display: inline-block;
+			float: right;
+			width: 2.2rem;
+			height: 2.2rem;
+			margin-top:0.5rem ;
+			background: url(img/search.png);
+			background-size: 2.2rem;
+		}
+		.public{
+			padding: 1rem;
+			margin-top: 1rem;
+			background: #FFFFFF;
+			border-bottom: .1rem solid #aaaaaa;
+		}
+		.public-top{
+			width: 100%;
+			height: 4rem;
+			line-height: 4rem;
+			font-size: 1.8rem;
+			border-bottom: .1rem solid #999;
+			margin-bottom: 1.5rem;
+		}
+		.jichu{
+			display: inline-block;
+			float: left;
+			width: 2.2rem;
+			height: 2.2rem;
+			margin-top:0.5rem ;
+			margin-right: .5rem;
+			background: url(img/jichu.png);
+			background-size: 2.2rem;
+		}
+		.public-content ul li{
+			list-style: none;
+			float: left;
+			padding: 0.5rem 0.7rem;
+			margin: 0.5rem 1.1rem;
+			text-align: center;
+			background: #dcdcdc;
+			border-radius: 1rem;
+		}
+		.public-content ul li a{
+			text-decoration: none;
+			color: #444444;
+			font-size: 1.7rem;
+		}
+		/*.profession{
+			padding: 1rem;
+			margin-top: 1rem;
+			background: #FFFFFF;
+				
+		}
+		.profession-top{
+			width: 100%;
+			height: 4rem;
+			line-height: 4rem;
+			font-size: 1.8rem;
+			border-bottom: .1rem solid #999;
+			margin-bottom: 1.5rem;
+		}
+		.zhuanye{
+			display: inline-block;
+			float: left;
+			width: 2.6rem;
+			height: 2.6rem;
+			margin-top:0.5rem ;
+			margin-right: .5rem;
+			background: url(img/zhuanye.png) no-repeat;
+			background-size: 2.6rem;
+		}
+		.profession-con ul li{
+			list-style: none;
+			float: left;
+			padding: 0.5rem 0.7rem;
+			margin: 0.5rem 1.1rem;
+			text-align: center;
+			background: #dcdcdc;
+			border-radius:1rem ;
+		
+		}
+		.profession-con ul li a{
+			text-decoration: none;
+			color: #444444;
+			font-size: 1.7rem;
+		}*/
+		</style>
+		</head>
+	<body>
+		<div class="ser">
+			<input type="text" id="searches" placeholder="JavaScript" value=""/>
+			<i class="search-1"></i>
+			<ul>
+				<li>招聘最热题</li>
+				<li>大数据时代</li>
+				<li>互联网"+"</li>
+				<li>程序员</li>
+				<li>Web前端</li>
+			</ul>
+		</div>
+		<div class="back">
+		</div>
+		<div id="con">
+		<div class="header">
+			<a href="main2.html" class="return"></a>
+			<span>{{name}}</span>
+			<i class="search"></i>
+		</div>
+		<div class="public" v-for="(value,index1) in list">
+			<div class="public-top">
+				<i class="jichu"></i>
+				{{value.name}}
+			</div>
+			<div class="public-content">
+				<ul class="clearfix">
+					<li v-for="(val,index) in value.child" v-on:click="jump(index,index1)"><a>{{val.name}}</a></li>
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/function.js"></script>
+		<script src="js/vue.js"></script>
+		<script type="text/javascript">	
+			
+			var vm=new Vue({
+				el:"#con",
+				data:{
+					list:[],	
+					name:""
+				},
+				mounted:function(){
+			        this.getDetail();
+//			        this.isData = false;
+			   },
+			   methods:{
+				 getDetail:function() {
+				 var parent_id=getParam("id");
+//				 var title=getParam('name')
+//					var na=title
+//					console.log(title)	
+				$.ajax({
+					type:"post",
+					url:"http://longface.com/index.php/home/category/lists",
+					dataType:"json",
+					data:{
+						parent_id:parent_id,
+					},
+					success:function(res){
+						console.log(res)
+			          this.list=res.lists;	
+			          this.name=res.cate_info
+					}.bind(this)
+				});
+				},
+				jump:function(index,index1){
+					var id =this.list[index1].child[index].id;
+					var name =escape(this.list[index1].child[index].name);
+						console.log(id);
+						console.log(name)
+						window.location.href="main4.html?id="+id+" &name="+name+""
+				},
+				}	
+			})
+			
+			
+//				var na=name
+			$(".search").click(function(){
+				$(".back").show();
+				$(".ser").show()
+			});
+			$(".back").click(function(){
+				$(".back").hide();
+				$(".ser").hide()
+			})
+			$(".ser ul li").click(function(){
+				var a=$(this).text();
+				$("#searches").val(a);		
+			})
+			
+			
+		</script>
+	</body>
+</html>

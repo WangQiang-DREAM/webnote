@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>shitixiangqing</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<style type="text/css">
+			body,html{
+				font-size: 62.5%;
+			}
+			body,html,div,img,ul,li,a,p,span{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #F5F5F5;
+			}
+			.clearfix::after{
+				content: "";
+				height: 0;
+				clear: both;
+				display: block;
+			}
+			.header{
+			width: 94%;
+			height: 3rem;
+			padding: 1rem 3%;
+			text-align: center;
+			line-height: 3rem;
+			font-size: 2rem;
+			color: #000;
+			border-bottom: .1rem solid #999999;
+			background: #FFFFFF;
+		}	
+		.return{
+			display: inline-block;
+			float: left;
+			width: 2.2rem;
+			height: 2.2rem;
+			margin-top:0.5rem ;
+			background: url(img/left.png) no-repeat center;
+			background-size: 2.2rem;
+		}
+		.search{
+			display: inline-block;
+			float: right;
+			width: 2.2rem;
+			height: 2.2rem;
+			margin-top:0.5rem ;
+			background: url(img/wujiaoxing.png) no-repeat;
+			background-size: 2.2rem;
+		}
+		.content{
+			padding: 1rem;
+			
+		}
+		.topic{
+			margin-bottom:2rem ;
+		}
+		.danxuan{
+			display: inline-block;
+			font-size: 1.2rem;
+			padding: .1rem .2rem;
+			border: .1rem solid #999;
+			margin-right: .5rem;
+			border-radius: .5rem;
+		}
+		.desc{
+			font-size: 1.7rem;
+			color: #444;
+		}
+		.container p{
+			font-size:1.7rem;	
+			margin-bottom: 1rem;
+		}
+		.container p i{
+			display: inline-block;
+			margin-right: 1rem;
+			padding: 0 .5rem;
+			font-style: normal;
+			border: .1rem solid #DDA0DD;
+			border-radius: 50%;
+		}
+		.conplain{
+			width: 96%;
+			padding: 1rem 2%;
+			position: fixed;
+			bottom: 0;
+		}
+		.direction{
+			text-align: center;
+			height: 4rem;
+			line-height: 4rem;
+		}
+		.direction span{
+			display: inline-block;
+			padding: 0 .1rem;
+			width: 4rem;
+			line-height: 2rem;
+			height: 2rem;
+			background: #999;
+		}
+		.turnback{
+			display: inline-block;
+			float: left;
+			width: 3rem;
+			height: 3rem;
+			margin-top:0.5rem ;
+			background: url(img/leftarrow.png) no-repeat center;
+			background-size: 3rem;
+		}
+		.turnlater{
+			display: inline-block;
+			float: right;
+			width: 3rem;
+			height: 3rem;
+			margin-top:0.5rem ;
+			background: url(img/rightarrow.png) no-repeat center;
+			background-size: 3rem;
+		}
+		.active{
+				background: #42BD56;
+			}
+			.plain{
+				width: 50%;
+				height: 2.5rem;
+				padding: .5rem;
+				margin: 1rem 0;
+				background: #007AFF;
+				margin: 0 auto;
+				color: #FFFFFF;
+				font-size: 1.8rem;
+				line-height: 2.5rem;
+				text-align: center;
+				
+			}
+			.anwser{
+				margin-bottom: 3rem ;
+				text-align: center;
+				font-size: 1.7rem;
+			}
+			</style>
+	</head>
+	<body>
+		<div id="con">
+			<div class="header">
+				<a href="" class="return"></a>
+				<span>Java语言程序设计第一章</span>
+				<i class="search"></i>
+			</div>
+			<div class="content">
+				<div class="topic">
+					<span class="danxuan">单选</span>
+					<span class="desc">{{list.stem}}</span>
+				</div>
+				<div class="container">
+					<p v-for="(value,index) in list.content" v-on:click="change(index)" v-bind:class="val[index]?'active':''">
+						<i>{{value.sn}}</i>
+						<span>{{value.title}}</span>
+					</p>
+				</div>
+			</div>
+			<div class="conplain">
+				<div class="anwser">
+					{{list.explain}}
+				</div>
+				<div class="plain">
+					本题解析
+				</div>
+				<div class="direction">
+					<i class="turnback" v-on:click="pre"></i>
+					<span>1/2</span>
+					<i class="turnlater" v-on:click="next"></i>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">	
+			var vm = new Vue({
+            el:"#con",
+            data:{
+                questionShowItem:0,
+                list:{}, 
+                explain:[],
+                val:[false,false,false,false],
+            },
+            mounted:function(){
+                this.showItemQuestion();
+            },
+            methods:{
+                showItemQuestion:function(){
+//              	var id =
+                	$.ajax({
+				 		type:"post",
+				 		url:"http://longface.com/index.php/home/question/getquestion",
+				 		dataType:"json",
+				 		data:{
+				 			obj_id:1,
+				 			type: 1,
+				 			course_id: 1
+				 		},
+				 		success:function(res){
+				 			console.log(res)
+				 			this.list = res.lists[this.questionShowItem];
+				 		}.bind(this)
+				 	});
+                },
+           
+                next:function(){
+                    if(this.questionShowItem >=this.list.length-1){
+                        alert("已经是第一题");
+                        return false;
+                    }else {
+                        this.questionShowItem++;
+                        this.showItemQuestion();
+                    }
+                    this.val=[false,false,false,false];
+                },
+                pre:function(){
+                    if(this.questionShowItem <= 0){
+                        alert("最前一题");
+                        return false;
+                    }else {
+                        this.questionShowItem--;
+                        this.showItemQuestion();
+                    }
+                },
+                change:function(index){
+						for (var i=0;i<this.val.length;i++) {
+							if (i==index) {
+								this.val.splice(i,1,true);					
+							} else{
+								this.val[i]=false;
+							}
+						}
+					}
+            }
+        })
+		</script>
+	</body>
+</html>

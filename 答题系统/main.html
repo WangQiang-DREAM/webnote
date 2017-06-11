@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>main</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="./css/swiper-3.4.2.min.css">
+		<style type="text/css">
+		html,body,div,h2,p,ul,li,span{
+			margin: 0;
+			padding: 0;
+			font-size: 62.5%;
+		}
+		.clearfix::after{
+			content: "";
+			height: 0;
+			clear: both;
+			display: block;
+		}
+		.header{
+			width: 100%;
+			height: 3rem;
+			text-align: center;
+			line-height: 3rem;
+			margin-top: 2rem;
+		}
+		h2{
+			font-size: 1.7rem;
+			color: #333;
+			font-family: "微软雅黑";
+		}
+		.title{
+			text-align: center;
+			height: 11rem;
+			line-height: 11rem;
+			background: #dda0dd;
+		}
+		.title p{
+			font-size: 1.8rem;
+			color: #fff;
+			font-weight: bold;
+		}
+		.content{
+			padding: 1rem;
+		}
+		.card{
+			margin: 1rem 0;
+		}
+		.card-left{
+			/*padding: 2.5rem 2rem;
+			background: #ff8c00;*/
+			float: left;
+			/*font-size: 1.8rem;*/
+		/*	color: #FFFFFF;*/
+		}
+		.card-left img{
+			width: 8rem;
+			height: 8rem;
+		}
+		.card-right{
+			float: left;
+			padding-left: 2rem;
+		}
+		.top{
+			font-size: 1.8rem;
+			color: #333;
+			margin-bottom: 3rem;
+			display: block;
+		}
+		.discuss{
+			
+		}
+		.discuss span{
+			font-size: 1.5rem;
+		}
+		img{
+			width: 1.6rem;
+			height: 1.6rem;
+		}
+		.nav{
+			width: 100%;
+			height: 5rem;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+		}
+		.nav ul{
+			width: 100%;
+		}
+		.nav ul li{
+			list-style: none;
+			float: left;
+			width: 33%;
+			text-align: center;
+			line-height: 2.5rem;
+			padding-top:1rem;
+		}
+		.nav ul li a{
+			text-decoration: none;
+			font-size: 1.6rem;
+		}
+		.ku{
+		
+			display: block;
+			width: 1.5rem;
+			height: 1.5rem;
+			background: url(img/pen.png);
+			background-size:1.5rem ;
+			margin: 0 auto;
+			margin-bottom: 0;
+			
+		}
+		.lei{
+			display: block;
+			width: 1.5rem;
+			height: 1.5rem;
+			background: url(img/fenlei.png);
+			background-size:1.5rem ;
+			margin: 0 auto;
+		}
+		.my{
+			display: block;
+			width: 1.5rem;
+			height: 1.5rem;
+			background: url(img/my.png);
+			background-size:1.5rem ;
+			margin: 0 auto;
+		}
+		.swiper-container{
+		
+			width: 100%;
+			height: auto;
+		}
+		.swiper-slide img{
+			width: 100%;
+			height: auto;
+		}
+		.collect{
+			width: 1.5rem;
+			height: 1.5rem;
+			display: inline-block;
+			background: url(img/shoucang.png) no-repeat;
+			background-size: 1.5rem;
+		}
+		.uncollect{
+			width: 1.6rem;
+			height: 1.6rem;
+			display: inline-block;
+			background: url(img/wujiaoxing.png) no-repeat;
+			background-size: 1.6rem;
+		}
+	</style>
+	</head>
+	<body>
+		<div class="header">
+			<h2>题库</h2>
+		</div>
+	<div class="swiper-container">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide"><img src="img/file1.jpg"></div>
+	        <div class="swiper-slide"><img src="img/file2.jpg"></div>
+	         <div class="swiper-slide"><img src="img/file2.jpg"></div>
+	    </div>
+   		 <div class="swiper-pagination"></div>
+	</div>
+		<div class="content">
+			<div class="card clearfix " v-for="(value,key) in cont">
+				<div class="card-left" v-on:click="jump(key)">
+					<img src="img/111.png" v-bind:src="value.image">
+				</div>
+				<div class="card-right">
+					<span class="top">
+					{{value.name}}
+					</span>
+					<p class="discuss">	
+						<span><img src="img/pen.png"/>{{value.do_num}}人做过</span>
+						<span>
+							<i class="collect" v-on:click="collect(value)" v-show="value.is_collect==0"></i>
+							<i class="uncollect" v-on:click="uncollect(value)" v-show="value.is_collect!=0"></i>
+							{{value.collect_num}}人收藏</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="nav">
+			<ul>
+				<li>
+					<i class="ku"></i>
+					<span id="">
+						<a href="">题库</a>
+					</span>
+				</li>
+				<li>
+					<i class="lei"></i>
+					<span id="">
+						<a href="main2.html">分类</a>
+					</span>
+				</li>
+				<li>
+					<i class="my"></i>
+					<span id="">
+						<a href="">我的</a>
+					</span>
+				</li>
+			</ul>
+		</div>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script type="text/javascript" src="js/swiper-3.4.2.jquery.min.js">
+		</script>
+		<script type="text/javascript">
+			var u_id=localStorage.getItem("user_id");
+			console.log(u_id);
+		
+			var vm=new Vue({
+				el:".content",
+				data:{
+					cont:[],
+				},
+				mounted:function(){
+			        this.getDetail();
+			   },	
+				methods:{
+				 getDetail:function() {
+				$.ajax({
+					type:"post",
+					url:"http://longface.com/index.php/home/index/index",
+					data:{
+						user_id:u_id,
+					},
+					dataType:"json",
+					success:function(res){
+						console.log(res)
+			          this.cont=res.lists
+					}.bind(this)
+				});
+				},
+				collect:function(value){
+				
+					$.ajax({
+						type:"post",
+						url:"http://longface.com/index.php/home/course/addcollect",
+						data:{
+							user_id:u_id,
+							course_id:value.id
+						},
+						success:function(res){
+							console.log(res);
+							value.is_collect++;
+							value.collect_num++;
+						}
+						
+					});
+						
+				},
+				uncollect:function(value){
+					
+					$.ajax({
+						type:"post",
+						url:"http://longface.com/index.php/home/course/uncollect",
+						data:{
+							user_id:u_id,
+							course_id:value.id
+						},
+						success:function(data){
+							console.log(data);
+							value.is_collect--;
+							value.collect_num--;
+						}
+					});
+				},
+				jump:function(key){
+					var pid=this.cont[key].id;
+					console.log(pid);
+					location.href="main4.html?id="+pid+""
+				},
+				
+				}
+					
+			});
+			
+			var mySwiper = new Swiper ('.swiper-container', {
+			    direction: 'horizontal',
+			    loop:false,
+				 pagination: '.swiper-pagination',
+				autoplay : 2000,
+				autoplayDisableOnInteraction : false,
+		  })   
+		</script>
+	</body>
+</html>
